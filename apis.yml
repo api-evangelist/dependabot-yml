@@ -1,0 +1,14 @@
+name: dependabot.yml
+description: GitHub Dependabot configuration file defining automated dependency update
+  schedules, package ecosystems to monitor, and review assignment rules.
+url: ''
+tags:
+- Dependency Management
+- Security
+- Automation
+- GitHub
+- CI/CD
+created: '2025'
+modified: '2025'
+apis: []
+common: []
