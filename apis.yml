@@ -1,4 +1,4 @@
-name: dependabot.yml
+name: Dependabot.yml
 description: GitHub Dependabot configuration file defining automated dependency update
   schedules, package ecosystems to monitor, and review assignment rules.
 url: ''
