@@ -1,0 +1,77 @@
+name: Dependabot Configuration Rules
+description: Validation rules for GitHub dependabot.yml configuration files.
+version: 1.0.0
+created: 2026-04-28
+modified: 2026-04-28
+rules:
+  - id: DBOT-001
+    name: Schema Version Required
+    severity: error
+    description: The version key must be present and equal to 2.
+    rationale: Dependabot only recognizes configurations with the v2 schema.
+
+  - id: DBOT-002
+    name: Updates Block Required
+    severity: error
+    description: The updates key must be present and contain at least one entry.
+    rationale: A configuration with no updates performs no work.
+
+  - id: DBOT-003
+    name: Package Ecosystem Required
+    severity: error
+    description: Each update entry must specify a package-ecosystem from the supported set.
+    rationale: Dependabot routes updates by ecosystem; the value drives all downstream behavior.
+
+  - id: DBOT-004
+    name: Directory or Directories Required
+    severity: error
+    description: Each update entry must declare directory or directories.
+    rationale: Without a target path, Dependabot cannot locate manifest files.
+
+  - id: DBOT-005
+    name: Schedule Interval Required
+    severity: error
+    description: Each update entry must include schedule.interval.
+    rationale: Cadence must be explicit; defaults are not assumed.
+
+  - id: DBOT-006
+    name: Constrain Open PR Volume
+    severity: warning
+    description: Set open-pull-requests-limit to a reviewable value, typically between 5 and 10.
+    rationale: Unbounded PR queues overwhelm reviewers and stale out.
+
+  - id: DBOT-007
+    name: Group Noisy Ecosystems
+    severity: warning
+    description: Use groups for npm, pip, and similar ecosystems to bundle minor and patch updates.
+    rationale: Grouping reduces PR churn while preserving major version isolation.
+
+  - id: DBOT-008
+    name: Apply Cooldown for Major Versions
+    severity: info
+    description: Configure cooldown.semver-major-days to defer major version PRs.
+    rationale: Major versions often ship regressions; a delay surfaces issues before adoption.
+
+  - id: DBOT-009
+    name: Pin GitHub Actions Ecosystem
+    severity: warning
+    description: Repositories using GitHub Actions should include a github-actions update entry.
+    rationale: Pinned actions silently drift and become security liabilities without monitoring.
+
+  - id: DBOT-010
+    name: Use Semantic Commit Prefixes
+    severity: info
+    description: Set commit-message.prefix to chore, fix, or build to align with conventional commits.
+    rationale: Predictable prefixes enable downstream changelog generation and release automation.
+
+  - id: DBOT-011
+    name: Avoid Insecure External Code Execution
+    severity: error
+    description: Do not set insecure-external-code-execution to allow except for ecosystems that require it.
+    rationale: Allowing arbitrary code during dependency resolution expands attack surface.
+
+  - id: DBOT-012
+    name: Ignore Rules Must Be Specific
+    severity: warning
+    description: Ignore entries should target a specific dependency-name or version range.
+    rationale: Wildcard ignores silently disable security updates across the project.

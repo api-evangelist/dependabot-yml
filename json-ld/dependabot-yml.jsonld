@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "dbot": "https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/vocabulary/dependabot-yml-vocabulary.json#"
+  },
+  "@type": "schema:TechArticle",
+  "@id": "https://github.com/api-evangelist/dependabot-yml",
+  "schema:name": "Dependabot.yml",
+  "schema:description": "GitHub Dependabot configuration file defining automated dependency update schedules, package ecosystems to monitor, and review assignment rules.",
+  "schema:about": [
+    { "@id": "dbot:DependabotConfig" },
+    { "@id": "dbot:PackageEcosystem" },
+    { "@id": "dbot:UpdateEntry" },
+    { "@id": "dbot:Schedule" },
+    { "@id": "dbot:Group" },
+    { "@id": "dbot:Cooldown" },
+    { "@id": "dbot:Registry" }
+  ],
+  "schema:keywords": [
+    "Dependency Management",
+    "Security",
+    "Automation",
+    "GitHub",
+    "CI/CD"
+  ],
+  "schema:dateCreated": "2025-01-01",
+  "schema:dateModified": "2026-04-28",
+  "schema:isPartOf": {
+    "@type": "schema:Collection",
+    "schema:name": "API Evangelist Building Blocks"
+  }
+}

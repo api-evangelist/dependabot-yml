@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/json-schema/dependabot-config-schema.json",
+  "title": "Dependabot Configuration",
+  "description": "JSON Schema for the GitHub dependabot.yml configuration file.",
+  "type": "object",
+  "required": ["version", "updates"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 2,
+      "description": "Dependabot configuration schema version. Must be 2."
+    },
+    "enable-beta-ecosystems": {
+      "type": "boolean",
+      "description": "Allow Dependabot to monitor beta-stage package ecosystems."
+    },
+    "registries": {
+      "type": "object",
+      "description": "Private registries Dependabot can access for dependency resolution.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "composer-repository",
+              "docker-registry",
+              "git",
+              "hex-organization",
+              "hex-repository",
+              "maven-repository",
+              "npm-registry",
+              "nuget-feed",
+              "python-index",
+              "rubygems-server",
+              "terraform-registry"
+            ]
+          },
+          "url": { "type": "string", "format": "uri" },
+          "username": { "type": "string" },
+          "password": { "type": "string" },
+          "token": { "type": "string" },
+          "key": { "type": "string" },
+          "replaces-base": { "type": "boolean" }
+        }
+      }
+    },
+    "updates": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/updateEntry" }
+    }
+  },
+  "$defs": {
+    "updateEntry": {
+      "type": "object",
+      "required": ["package-ecosystem", "schedule"],
+      "properties": {
+        "package-ecosystem": {
+          "type": "string",
+          "enum": [
+            "bundler",
+            "cargo",
+            "composer",
+            "devcontainers",
+            "docker",
+            "docker-compose",
+            "dotnet-sdk",
+            "elm",
+            "github-actions",
+            "gitsubmodule",
+            "gomod",
+            "gradle",
+            "helm",
+            "maven",
+            "mix",
+            "npm",
+            "nuget",
+            "pip",
+            "pub",
+            "swift",
+            "terraform",
+            "uv"
+          ]
+        },
+        "directory": { "type": "string" },
+        "directories": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "schedule": {
+          "type": "object",
+          "required": ["interval"],
+          "properties": {
+            "interval": {
+              "type": "string",
+              "enum": [
+                "daily",
+                "weekly",
+                "monthly",
+                "quarterly",
+                "semiannually",
+                "yearly",
+                "cron"
+              ]
+            },
+            "cronjob": { "type": "string" },
+            "day": {
+              "type": "string",
+              "enum": [
+                "monday",
+                "tuesday",
+                "wednesday",
+                "thursday",
+                "friday",
+                "saturday",
+                "sunday"
+              ]
+            },
+            "time": { "type": "string", "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$" },
+            "timezone": { "type": "string" }
+          }
+        },
+        "target-branch": { "type": "string" },
+        "open-pull-requests-limit": { "type": "integer", "minimum": 0 },
+        "rebase-strategy": {
+          "type": "string",
+          "enum": ["auto", "disabled"]
+        },
+        "vendor": { "type": "boolean" },
+        "versioning-strategy": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "increase",
+            "increase-if-necessary",
+            "lockfile-only",
+            "widen"
+          ]
+        },
+        "labels": { "type": "array", "items": { "type": "string" } },
+        "milestone": { "type": "integer" },
+        "assignees": { "type": "array", "items": { "type": "string" } },
+        "reviewers": { "type": "array", "items": { "type": "string" } },
+        "commit-message": {
+          "type": "object",
+          "properties": {
+            "prefix": { "type": "string" },
+            "prefix-development": { "type": "string" },
+            "include": { "type": "string", "enum": ["scope"] }
+          }
+        },
+        "pull-request-branch-name": {
+          "type": "object",
+          "properties": {
+            "separator": { "type": "string", "enum": ["-", "_", "/"] }
+          }
+        },
+        "allow": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dependency-name": { "type": "string" },
+              "dependency-type": {
+                "type": "string",
+                "enum": [
+                  "direct",
+                  "indirect",
+                  "all",
+                  "production",
+                  "development"
+                ]
+              }
+            }
+          }
+        },
+        "ignore": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dependency-name": { "type": "string" },
+              "versions": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "update-types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "version-update:semver-major",
+                    "version-update:semver-minor",
+                    "version-update:semver-patch"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "groups": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "applies-to": {
+                "type": "string",
+                "enum": ["version-updates", "security-updates"]
+              },
+              "dependency-type": {
+                "type": "string",
+                "enum": ["development", "production"]
+              },
+              "patterns": { "type": "array", "items": { "type": "string" } },
+              "exclude-patterns": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "update-types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["major", "minor", "patch"]
+                }
+              }
+            }
+          }
+        },
+        "cooldown": {
+          "type": "object",
+          "properties": {
+            "default-days": { "type": "integer", "minimum": 0 },
+            "semver-major-days": { "type": "integer", "minimum": 0 },
+            "semver-minor-days": { "type": "integer", "minimum": 0 },
+            "semver-patch-days": { "type": "integer", "minimum": 0 },
+            "include": { "type": "array", "items": { "type": "string" } },
+            "exclude": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "registries": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "insecure-external-code-execution": {
+          "type": "string",
+          "enum": ["allow", "deny"]
+        }
+      }
+    }
+  }
+}

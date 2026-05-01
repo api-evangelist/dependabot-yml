@@ -1,0 +1,75 @@
+{
+  "@context": {
+    "@vocab": "https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/vocabulary/dependabot-yml-vocabulary.json#",
+    "schema": "https://schema.org/"
+  },
+  "name": "Dependabot.yml Vocabulary",
+  "description": "Controlled vocabulary for the GitHub dependabot.yml configuration domain.",
+  "version": "1.0.0",
+  "terms": [
+    {
+      "term": "DependabotConfig",
+      "definition": "A YAML document at .github/dependabot.yml that instructs GitHub Dependabot how to monitor and update dependencies."
+    },
+    {
+      "term": "PackageEcosystem",
+      "definition": "A supported dependency manager (npm, pip, maven, cargo, github-actions, docker, etc.) that Dependabot monitors."
+    },
+    {
+      "term": "UpdateEntry",
+      "definition": "A single configuration block in the updates array, scoped to one ecosystem and directory."
+    },
+    {
+      "term": "Schedule",
+      "definition": "Cadence configuration controlling how frequently Dependabot checks for updates."
+    },
+    {
+      "term": "Interval",
+      "definition": "Frequency value (daily, weekly, monthly, quarterly, semiannually, yearly, or cron) for an update check."
+    },
+    {
+      "term": "Group",
+      "definition": "Named bundle of dependencies that should be updated together in a single pull request."
+    },
+    {
+      "term": "Cooldown",
+      "definition": "Delay window between when a dependency version is published and when Dependabot proposes adopting it."
+    },
+    {
+      "term": "AllowRule",
+      "definition": "Filter that explicitly opts a dependency or dependency-type into update consideration."
+    },
+    {
+      "term": "IgnoreRule",
+      "definition": "Filter that excludes a dependency, version range, or update-type from updates."
+    },
+    {
+      "term": "Registry",
+      "definition": "Authenticated upstream package source referenced by an update entry."
+    },
+    {
+      "term": "VersioningStrategy",
+      "definition": "Policy controlling how Dependabot rewrites manifest version constraints (auto, increase, increase-if-necessary, lockfile-only, widen)."
+    },
+    {
+      "term": "RebaseStrategy",
+      "definition": "Policy controlling whether Dependabot automatically rebases its open pull requests."
+    },
+    {
+      "term": "OpenPullRequestsLimit",
+      "definition": "Cap on the number of concurrent open Dependabot pull requests for an update entry."
+    },
+    {
+      "term": "TargetBranch",
+      "definition": "Branch other than the repository default that Dependabot opens pull requests against."
+    },
+    {
+      "term": "SecurityUpdate",
+      "definition": "Dependabot pull request that resolves a known vulnerability advisory."
+    },
+    {
+      "term": "VersionUpdate",
+      "definition": "Dependabot pull request that adopts a newer non-vulnerable release."
+    }
+  ]
+}
