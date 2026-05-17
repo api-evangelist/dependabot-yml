@@ -50,14 +50,14 @@ apis:
       - type: Vocabulary
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/vocabulary/dependabot-yml-vocabulary.json
-      - type: JSON-LD
+      - type: JSONLD
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/json-ld/dependabot-yml.jsonld
 common:
   - type: Documentation
     url: >-
       https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/api-evangelist
 maintainers:
   - FN: Kin Lane
