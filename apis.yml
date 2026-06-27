@@ -38,13 +38,13 @@ apis:
       - type: Capabilities
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/capabilities/dependabot-yml-capabilities.md
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/examples/basic-npm.yml
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/examples/multi-ecosystem.yml
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dependabot-yml/main/examples/grouped-security.yml
       - type: Vocabulary
