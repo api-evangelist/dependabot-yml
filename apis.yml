@@ -24,6 +24,13 @@ tags:
   - Dependency Management
   - GitHub
   - Security
+  - Open-Source
+tags_raw:
+  - Automation
+  - CI/CD
+  - Dependency Management
+  - GitHub
+  - Security
   - Open Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/dependabot-yml/refs/heads/main/apis.yml
