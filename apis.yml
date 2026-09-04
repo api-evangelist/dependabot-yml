@@ -1,5 +1,6 @@
 aid: dependabot-yml
 name: Dependabot.yml
+x-type: convention
 description: >-
   GitHub Dependabot configuration file defining automated dependency update
   schedules, package ecosystems to monitor, grouping, cooldown, and review
