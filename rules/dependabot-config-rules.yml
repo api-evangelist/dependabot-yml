@@ -1,8 +1,8 @@
-name: Dependabot Configuration Rules
+x-name: Dependabot Configuration Rules
 description: Validation rules for GitHub dependabot.yml configuration files.
-version: 1.0.0
-created: 2026-04-28
-modified: 2026-04-28
+x-version: 1.0.0
+x-created: 2026-04-28
+x-modified: 2026-04-28
 rules:
   - id: DBOT-001
     name: Schema Version Required
