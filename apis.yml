@@ -36,7 +36,7 @@ tags:
   - Dependency Management
   - GitHub
   - Security
-  - Open-Source
+  - Open Source
 tags_raw:
   - Automation
   - CI/CD
@@ -44,6 +44,7 @@ tags_raw:
   - GitHub
   - Security
   - Open Source
+  - Open-Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/dependabot-yml/refs/heads/main/apis.yml
 created: '2025-01-01'
